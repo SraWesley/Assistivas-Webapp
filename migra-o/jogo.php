@@ -3,7 +3,7 @@
 	
 	$level = $_SESSION['levels'];
 	$file = array();
-	$wrong_words = array();
+	$wrong_words = $_SESSION['wrong_words'];
 	$contador = $_SESSION['count'];
 	$id = $_SESSION['identify'];
 	$end = false;
@@ -55,6 +55,8 @@
 			echo "<script>alert('Não foi dessa vez!');</script>";
 			$_SESSION['mistakes'] = $_SESSION['mistakes'] + 1;
 			$mistakes = $_SESSION['mistakes'];
+			array_push($_SESSION['wrong_words'], $compare);
+			$wrong_words = $_SESSION['wrong_words'];
 		}
 		
 		$points = $_SESSION['points'];
@@ -62,8 +64,25 @@
 	
 
 	if($end){
-		echo "Pontos: ".$points."<br>";
-		echo "Erros: ".$mistakes."<br>";
+		$split = array();
+		for($i = 0; $i < sizeof($wrong_words);$i++){
+			$test = str_split($wrong_words[$i]);
+			array_push($split, $test);
+		}
+
+		$_SESSION['split'] = $split;
+		
+		/*
+		for($i = 0; $i < sizeof($split); $i++){
+			foreach ($split[$i] as $value) {
+		    	echo "Split: $value<br />\n";
+			}
+			echo "<br>";
+		}
+		
+		//echo "Pontos: ".$points."<br>";
+		//echo "Erros: ".$mistakes."<br>";
+		*/
 
 		header("Refresh:1; url = end.php"); // mudar para Location quando resolver os pontos
 	}
