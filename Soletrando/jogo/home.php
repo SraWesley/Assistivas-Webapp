@@ -34,7 +34,7 @@
        
 
         
-        header("Location: jogo2.php");
+        header("Location: jogo.php");
     }
 ?>
 <!DOCTYPE html>
