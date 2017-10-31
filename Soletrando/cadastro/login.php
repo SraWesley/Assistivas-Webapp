@@ -39,13 +39,13 @@
 				</div> 
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Senha:</label>
+				<label class="control-label col-sm-2" for="senha">Senha:</label>
 				<div class="col-sm-3">
 					<input type="password" id="senha" pattern=".{6,}" title = "A senha deve ter mais de seis caracteres" class="form-control" required name="senha" placeholder="Enter password">
 				</div>			
 				<div class="form-group">
 					<br>	
-					<button href="home" type="submit" class="btn btn-default">Logar</button>	
+					<button href="home" type="submit" class="btn btn-default" value = "Logar">Logar</button>	
 				</div>
 			</form>
 	</div>
