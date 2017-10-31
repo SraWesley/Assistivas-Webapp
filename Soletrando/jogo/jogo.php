@@ -51,13 +51,16 @@
 	if($end){
 		if($_SESSION['mistakes'] !== 0){
 			$split = array();
+			$matches = array();
 			for($i = 0; $i < sizeof($wrong_words);$i++){
-				$test = str_split($wrong_words[$i]);
-				array_push($split, $test);
+
+				preg_match_all('/./u', $wrong_words[$i], $array);
+				$matches[$i] = $array[0];
+				array_push($split, $matches[$i]);
+				
 			}
 			
 			$_SESSION['split'] = $split;
-			
 			echo '<script>alert("Pontos: '.$points.'\n'.'Erros: '.$mistakes.'");</script>';
 			header("Refresh:1; url = end_trial.php");
 		} else {
