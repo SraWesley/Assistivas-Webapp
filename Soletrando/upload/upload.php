@@ -35,14 +35,14 @@
 	<body>
 		<form action = "upload.php" method = "POST" enctype = "multipart/form-data">
 			Arquivo:
-			<input type = "file" required name = "arquivo">
+			<label for = "arquivo"><input type = "file" required name = "arquivo"></label>
 			<br><br>
 			Dificuldade:
-			<input type = "radio" required name = "level" value = "1"> Nível 1	
-			<input type = "radio" required name = "level" value = "2"> Nível 2
-			<input type = "radio" required name = "level" value = "3"> Nível 3
+			<label for = "nível1"><input type = "radio" required name = "level" value = "1"> Nível 1 </label>
+			<label for = "nível2"><input type = "radio" required name = "level" value = "2"> Nível 2 </label>
+			<label for = "nível3"><input type = "radio" required name = "level" value = "3"> Nível 3 </label>
 			<br><br>
-			<input type = "submit" value = "Salvar">
+			<input type = "submit" value = "Salvar Arquivo">
 		</form>
 	</body>
 </html>
