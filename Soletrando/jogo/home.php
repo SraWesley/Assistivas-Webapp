@@ -1,7 +1,6 @@
 <?php
     session_start();
     $levels = 1;
-
     $_SESSION['count'] = 0;
     $_SESSION['identify'] = 0;
     $_SESSION['points'] = 0;
@@ -13,26 +12,18 @@
         $path = "../palavras/words/".$levels."/";
         $diretorio = dir($path);
         $files = array();
-
-
         while($arquivo = $diretorio -> read()){
-
             if($arquivo !== '.' && $arquivo !== '..' && $arquivo !== ' ' && $arquivo !== 'random.php') {
                 array_push($files, $arquivo);
             }
-
             shuffle($files);
-
         }
         
         $_SESSION['levels'] = $levels;
-
-
         for($i = 0; $i < 3;$i++){
             $_SESSION['f'.$i] = $files[$i];
         }
        
-
         
         header("Location: jogo.php");
     }
@@ -70,14 +61,32 @@
         </ul>
     </div>
 
-    <br><br><br><br>
+    <br><br>
+    <table>
+        <tr>
+            <td> Nível 1: </td>
+            
+        </tr>
+        <td> 1 ponto por palavra </td>
+        <tr>
+            <td> Nível 2: </td>
+            
+        </tr>
+        <td> 2 pontos por palavra </td>
+        <tr>
+            <td> Nível 3: </td>   
+        </tr>
+        <td> 3 pontos por palavra </td>
+    </table>
+
+    <br><br>
     <form action = "home.php" method = "POST">
         Em qual nível deseja jogar?
-        <input type = "radio" required name = "level" value = "1"> Nível 1  
-        <input type = "radio" required name = "level" value = "2"> Nível 2
-        <input type = "radio" required name = "level" value = "3"> Nível 3
+        <label for = "nível1"><input type = "radio" required name = "level" value = "1">  Nível 1  </label>
+        <label for = "nível2"><input type = "radio" required name = "level" value = "2"> Nível 2   </label>
+        <label for = "nível3"><input type = "radio" required name = "level" value = "3"> Nível 3   </label>
         <br><br>
-        <input type = "submit" value = "Enviar">
+        <input type = "submit" value = "Começar o jogo">
         <br>
     </form>
 
