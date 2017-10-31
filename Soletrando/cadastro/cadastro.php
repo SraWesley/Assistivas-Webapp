@@ -57,16 +57,16 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Senha:</label>
+				<label class="control-label col-sm-2" for="senha">Senha:</label>
 				<div class="col-sm-3">
 					<input type="password" id="senha" pattern=".{6,}" title = "A senha deve ter mais de seis caracteres" class="form-control" name="senha" placeholder="Enter password">
 				</div>			
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="pwd">Senha Novamente:</label>
+					<label class="control-label col-sm-2" for="senha_novamente">Senha Novamente:</label>
 					<div class="col-sm-3">
 						<input type="password"  id="senha2" pattern=".{6,}" title = "As senhas não conferem" class="form-control" required placeholder="Enter password" onChange="checkPasswordMatch();" name = "senha">
 					</div>	
-					<button href="home" type="submit" class="btn btn-default">Cadastrar</button>	
+					<button href="home" type="submit" class="btn btn-default" value = "Cadastrar">Cadastrar</button>	
 				</div>
 			</form>
 			<div id="divCheckPasswordMatch"></div>	
