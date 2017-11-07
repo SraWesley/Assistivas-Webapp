@@ -1,52 +1,135 @@
 <?php
-
 	session_start();
 	$path = "../audios/";
-	$diretorio = dir($path);
-	$letters = array();
 	$split_end = $_SESSION['split'];
-	$letters_end = array();
+	$cont = 0;
+	$tamanho = sizeof($split_end[$cont]) - 1;
 
+	
 
-	while($arquivo = $diretorio -> read()){
-		if($arquivo !== '.' && $arquivo !== '..' && $arquivo !== ' '){
-			array_push($letters, utf8_encode($arquivo)); 
-		}
-		           
-    }
+	
 
-    for($i = 0; $i < sizeof($letters); $i++){
-    	$letters_end[$i] = substr($letters[$i], 0, -4);
-    }
+	
+	for($j = 0; $j < sizeof($split_end); $j++){
 
-    $j = 0; 
-    $cont = 0; 
-    $end = false;
-    while($end === false){
-    	$word_size = (sizeof($split_end[$cont]));
-    	for($i = 0; $i < sizeof($letters_end); $i++){ // 32 vezes
-	    	if($letters_end[$i] === $split_end[$cont][$j]){
-	    		$soundfile = strval("../audios/".$letters_end[$i].".wav");
-	    		$j++;
-	    		echo "<audio controls>
+	    for($i = 1; $i < $tamanho; $i++){ 
+	    	switch ($split_end[$cont][$i]) {
+	    		case 'â':
+	    			$soundfile2 = strval($path."a".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."^".".wav");
+	    			break;
+	    		case 'ê':
+	    			$soundfile2 = strval($path."e".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."^".".wav");
+		    	
+		    		break;
+		    	case 'ô':
+		    		$soundfile2 = strval($path."o".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."^".".wav");
+		    		break;
+		    	case 'á':
+		    		$soundfile2 = strval($path."a".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."´".".wav");
+		    		break;
+		    	case 'é':
+		    		$soundfile2 = strval($path."e".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."´".".wav");
+		    		break;
+		    	case 'í':
+		    		$soundfile2 = strval($path."i".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."´".".wav");
+		    		break;
+		    	case 'ó':
+		    		$soundfile2 = strval($path."o".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."´".".wav");
+		    		break;
+		    	case 'ú':
+		    		$soundfile2 = strval($path."u".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."´".".wav");
+		    		break;
+		    	case 'ã':
+		    		$soundfile2 = strval($path."a".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."~".".wav");
+		    		break;
+		    	case 'õ':
+		    		$soundfile2 = strval($path."o".".wav");
+	    			echo "<audio controls>
+						<source src=\"$soundfile2\" type=\"audio/mpeg\"><br>
+						Your browser does not support the audio element.
+						</audio><br>
+						";
+		    		$soundfile = strval($path."~".".wav");
+		    		break;
+		    	case 'ç':
+		    		$soundfile = strval($path."ç".".wav");
+		    		break;
+	    		default:
+	    			$soundfile = strval($path.$split_end[$cont][$i].".wav");
+	    			break;
+	    	}
+
+	    	echo "<audio controls>
 				<source src=\"$soundfile\" type=\"audio/mpeg\"><br>
 				Your browser does not support the audio element.
 				</audio><br>
 				";
-	    		if($j === $word_size){
-					$j = 0;
-					$cont++;
-					
-					if($cont === (sizeof($split_end))){
-						$end = true;
-						break;
+   		}  	
 
-					}
-
-		   		}
-	    	}	    	
-	    }
+   		if($cont+1 === 2){
+   			break;
+   		} else {
+   			$cont++;
+   			$tamanho = sizeof($split_end[$cont]) - 1;
+   		}
+   		
+   		
     }
 	
+
    
 ?>
