@@ -4,14 +4,10 @@
 	$split_end = $_SESSION['split'];
 	$cont = 0;
 	$tamanho = sizeof($split_end[$cont]) - 1;
-
 	
 
-	
-
-	
-	for($j = 0; $j < sizeof($split_end); $j++){
-
+	echo "Palavra 1:"."<br>";
+	for($j = 0; $j < sizeof($split_end); $j++){ 
 	    for($i = 1; $i < $tamanho; $i++){ 
 	    	switch ($split_end[$cont][$i]) {
 	    		case 'â':
@@ -120,9 +116,10 @@
 				";
    		}  	
 
-   		if($cont+1 === 2){
+   		if($cont+1 === sizeof($split_end)){
    			break;
    		} else {
+   			echo "Palavra ".$cont.": ";
    			$cont++;
    			$tamanho = sizeof($split_end[$cont]) - 1;
    		}
