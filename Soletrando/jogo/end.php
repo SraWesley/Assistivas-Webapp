@@ -119,8 +119,10 @@
    		if($cont+1 === sizeof($split_end)){
    			break;
    		} else {
-   			echo "Palavra ".$cont.": ";
+   			
    			$cont++;
+   			$palavra = $cont;
+  			echo "Palavra ".($palavra+1).": "."<br>";
    			$tamanho = sizeof($split_end[$cont]) - 1;
    		}
    		
