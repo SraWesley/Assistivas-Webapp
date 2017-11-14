@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=\"utf-8">
+		<meta name=\"viewport" content=\"width=device-width, initial-scale=1">
+	    <link href=\"css/bootstrap.min.css" rel=\"stylesheet">
+	    <link href=\"css/simple-sidebar.css" rel=\"stylesheet">
+	    <link rel=\"icon" href=\"/favicon.ico" type=\"image/x-icon"/>
+	    <link rel=\"shortcut icon" href=\"/favicon.ico" type=\"image/x-icon"/>
+	    <script src=\"js/jquery.js"></script
+	    <script src=\"js/bootstrap.min.js"></script>
+	    
+	    <title> Jogo </title>
+	</head>
+	<body>
+
+	    <div class=\"header">
+	        <ul class=\"sidebar-nav">
+	            <li class=\"sidebar-brand">
+	                <a href=\"../jogo/home.php">
+	                    Soletrando
+	                </a>
+	            </li>
+	            <li>
+	                <a href=\"../cadastro/cadastro.php"> Faça seu cadastro </a>
+	                
+	            </li>
+	            <li>
+	               <a href=\"../cadastro/login.php"> Faça seu Login </a>
+	           </li>
+	        </ul>
+	    </div>
+	</body>
+</html>
 <?php
 	session_start();
 	
@@ -49,16 +83,18 @@
 	}
 	
 	if($end){
-		if($_SESSION['mistakes'] !== 0){
+		if($_SESSION['mistakes'] !== 0){ 
 			$split = array();
 			$matches = array();
-			for($i = 0; $i < sizeof($wrong_words);$i++){
+			for($i = 0; $i < sizeof($wrong_words);$i++){ 
 
-				preg_match_all('/./u', $wrong_words[$i], $array);
-				$matches[$i] = $array[0];
-				array_push($split, $matches[$i]);
-				
+				$matches[$i] = preg_split('//u',  $wrong_words[$i]);
+				array_push($split, $matches[$i]); 
+
+
 			}
+
+
 			
 			$_SESSION['split'] = $split;
 			echo '<script>alert("Pontos: '.$points.'\n'.'Erros: '.$mistakes.'");</script>';
@@ -95,26 +131,7 @@
     
     <title> Jogo </title>
 </head>
-<body>
 
-    <div id=\"sidebar-wrapper">
-        <ul class=\"sidebar-nav">
-            <li class=\"sidebar-brand">
-                <a href=\"#">
-                    Soletrando
-                </a>
-            </li>
-            <li>
-                <a href=\"../cadastro/cadastro.php"> Faça seu cadastro </a>
-                
-            </li>
-            <li>
-               <a href=\"../cadastro/login.php">Login</a>
-           </li>
-        </ul>
-    </div>
-
-    <br><br><br><br>
     <form action = "jogo.php" method = "POST">
         Escreva a palavra que escutou:
         <label for = "resposta">
